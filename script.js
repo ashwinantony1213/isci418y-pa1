@@ -12,8 +12,9 @@ form.addEventListener("submit", function(event) {
     const taskPriority = priorityInput.value;
 
     if (taskName === "") {
-        return;
-    }
+    alert("Please enter a task.");
+    return;
+}
 
     const task = {
         name: taskName,
