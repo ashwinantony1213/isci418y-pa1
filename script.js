@@ -38,10 +38,33 @@ function displayTasks() {
         taskElement.classList.add("task");
         taskElement.classList.add(task.priority);
 
+        if (task.completed) {
+            taskElement.classList.add("completed");
+        }
+
         const taskText = document.createElement("span");
         taskText.textContent = task.name + " - " + task.priority;
 
+        const completeButton = document.createElement("button");
+        completeButton.textContent = "Complete";
+
+        completeButton.addEventListener("click", function() {
+            task.completed = !task.completed;
+            displayTasks();
+        });
+
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "Delete";
+
+        deleteButton.addEventListener("click", function() {
+            tasks.splice(i, 1);
+            displayTasks();
+        });
+
         taskElement.appendChild(taskText);
+        taskElement.appendChild(completeButton);
+        taskElement.appendChild(deleteButton);
+
         taskList.appendChild(taskElement);
     }
 }
